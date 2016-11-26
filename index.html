@@ -3,11 +3,14 @@
 		<title>DevLeague GeeMail Challenge</title>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Sumana" rel="stylesheet">
+
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-    
+
+
         //current Date info 
         document.getElementById("today").innerHTML = Date();
 
@@ -15,15 +18,8 @@
         document.addEventListener("click", function(){
         document.getElementById("menu").innerHTML="You Got Mail Homie!";
         });
-
-        //event handler for body message  
-        document.addEventListener("click", function(){
-        var bodyElement = document.getElementById("row1");  
-        bodyElement.innerHTML = body;
-        element.appendChild(bodyElement);
-
-        });
-
+ 
+      
         //recurring function (need work on this)
         window.setInterval(getNewMessage(), 500);
           function getNewMessage(){
@@ -34,6 +30,8 @@
         //accessing prepopulated data stored in window.geemails variable
         var element = document.getElementById('main');
 
+         console.log("my sender is: " + sender);
+      
         for (var i = 0; i < window.geemails.length; i++){
           var currentMessage = window.geemails[i];
           var sender = currentMessage.sender;
@@ -41,24 +39,18 @@
           var date = currentMessage.date;
           var body = currentMessage.body;
 
+       
+
         //visual list of mail message 
-        var senderElement = document.createElement('row1');
-        senderElement.innerHTML = sender;
+        var senderElement = document.createElement('p');
+        senderElement.setAttribute("id", "row" + i);
+        senderElement.innerHTML = "Sender:" + sender + " Subject" + subject + "Date: " + date;
         element.appendChild(senderElement);
-       
-        var subjectElement = document.createElement('row1');
-        subjectElement.innerHTML = subject;
-        senderElement.appendChild(subjectElement);
 
-        var dateElement = document.createElement('row1');
-        dateElement.innerHTML = date;
-        subjectElement.appendChild(dateElement);
-
-        //body content after clicking on message
-        var bodyElement = document.getElementById('row2');
-        bodyElement.innerHTML = body;
-        row2.appendChild(bodyElement);
+        
        
+
+
           }
 
        };    
@@ -69,7 +61,7 @@
 	<body>
 		
 		<header>
-			<h1>GeeMail</h1>
+			<h1>GoogleMail</h1>
       <h3>Powered By { }</h3>
 			<p id="today"></p>
 
@@ -77,16 +69,15 @@
 
 		<div id="menu">
 				<table>
-					<tr><td><strong>Inbox {1}</strong></td></tr>
+					<tr><td id="inbox"><strong></strong></td></tr>
 				</table>
 		</div>
     	
     <div id="main"> 
-			    <p id="row1"></p>	  
-          <p id="row2"></p>
+			    
 
     </div> 
-
+    
     <div>
         <table>
           <tr><td><h5><img src="devleague logo.jpeg"></h5></td></tr>

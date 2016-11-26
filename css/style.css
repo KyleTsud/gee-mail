@@ -23,6 +23,7 @@ header {
 }
 
 #main {
+	font-family: 'Sumana', sans-serif;
 	float: left;
 	width: 1000px;
 	height: 800px;

@@ -47,3 +47,4 @@ function getRandomDate(){
 	window.geemails = [];
 	loadGeeMails();	
 })();
+console.log(window.geemails); //this shows the the mail generated data in console log
