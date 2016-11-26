@@ -19,7 +19,7 @@
         document.getElementById("menu").innerHTML="You Got Mail Homie!";
         });
  
-      
+        
         //recurring function (need work on this)
         window.setInterval(getNewMessage(), 500);
           function getNewMessage(){
@@ -32,6 +32,10 @@
 
          console.log("my sender is: " + sender);
       
+         // function mod(i) {
+         //  var temp = document.getElementById("body" + i);
+         //  temp.classList.toggle(".clicked");         }
+
         for (var i = 0; i < window.geemails.length; i++){
           var currentMessage = window.geemails[i];
           var sender = currentMessage.sender;
@@ -40,21 +44,41 @@
           var body = currentMessage.body;
 
        
-
+          console.log(body);
         //visual list of mail message 
-        var senderElement = document.createElement('p');
-        senderElement.setAttribute("id", "row" + i);
-        senderElement.innerHTML = "Sender:" + sender + " Subject" + subject + "Date: " + date;
+        var senderElement = document.createElement('p'); //create paragraph element
+        senderElement.className = "buyme"; //set ID
+        senderElement.innerHTML = "Sender: " + sender + " Subject: " + subject + " Date: " + date; //pulls vars sender, subject, etc
         element.appendChild(senderElement);
 
+        //appends the paragraph element as a child of the main element
+        var bodyElement = document.createElement('p'); 
+        bodyElement.className = "howmuch"; 
+        bodyElement.style.display = "none";
+        bodyElement.innerHTML = body;
+        senderElement.appendChild(bodyElement);
         
-       
 
+        }
 
-          }
+        var showPrice = document.getElementsByClassName("buyme");
+        for(var j = 0; j < showPrice.length; j++) {
+          showPrice[j].addEventListener("click", secret);
+        }
+              
+        function secret(){
+         var priceShow = this.querySelectorAll('.howmuch')[0];
+          console.log(this);
+          if(priceShow.style.display === 'none'){
+            priceShow.style.display = 'block';
+          }else{
+           priceShow.style.display = 'none';
+        }
 
-       };    
-     
+    } 
+
+    };     
+
     </script>
 	</head>
 	
@@ -80,7 +104,7 @@
     
     <div>
         <table>
-          <tr><td><h5><img src="devleague logo.jpeg"></h5></td></tr>
+          <tr><td><h5><img src="http://www.devleague.com/img/dev_league_emblem.png"></h5></td></tr>
         </table> 
     </div>    
     
